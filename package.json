@@ -36,9 +36,9 @@
     "nodebots-interchange": "^1.1.2"
   },
   "devDependencies": {
-    "ava": "^0.15.2",
+    "ava": "^0.16.0",
     "coveralls": "^2.11.12",
-    "nyc": "^7.1.0",
+    "nyc": "^8.1.0",
     "xo": "^0.16.0"
   },
   "xo": {
