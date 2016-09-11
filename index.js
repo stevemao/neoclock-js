@@ -47,21 +47,15 @@ function time() {
 }
 
 function drawCircle(strip) {
-	return (color = Color('#DDA1F1'), speed = 1, anti = false) => {
+	return (color = Color('#B1E2DA'), speed = 1, anti = false, num = 10) => {
 		speed = speed * 100;
+		color = Color(color);
 
-		const colors = [
-			color.rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray(),
-			color.darken(0.4).rgbArray()
-		];
+		const colors = [color.rgbArray()];
+
+		for (let i = 0; i < num - 1; i++) {
+			colors[i] = color.darken(0.4).rgbArray();
+		}
 
 		const pixels = [];
 
