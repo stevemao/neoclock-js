@@ -8,6 +8,7 @@
 ## Hardware
 
 Buy from [adafruit](https://www.adafruit.com/categories/184) or [AliExpress](https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20160910210158&SearchText=ws2812+60+arduino)
+
 [WS2812 datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812.pdf)
 
 
