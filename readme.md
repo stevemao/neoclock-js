@@ -34,6 +34,14 @@ Get current time for debug
 
 The [strip object](https://github.com/ajfisher/node-pixel#strip)
 
+#### circle()
+
+Draw a circle
+
+#### animating
+
+Is the clock animating
+
 
 ## Further reading
 

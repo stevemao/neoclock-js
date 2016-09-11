@@ -1,5 +1,6 @@
 const pixel = require('node-pixel');
 const five = require('johnny-five');
+const Color = require('color');
 
 const board = new five.Board();
 
@@ -8,6 +9,7 @@ const minuteColor = 'green';
 const secondColor = [255, 0, 255];
 
 const delta = 1000;
+let animating = false;
 
 function getTime() {
 	const date = new Date();
@@ -44,6 +46,57 @@ function time() {
 	return `${hours}:${minutes}:${seconds}`
 }
 
+function drawCircle(strip) {
+	return (color = Color('#DDA1F1'), speed = 1, anti = false) => {
+		speed = speed * 100;
+
+		const colors = [
+			color.rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray(),
+			color.darken(0.4).rgbArray()
+		];
+
+		const pixels = [];
+
+		animating = true;
+		from = 0;
+
+		const interval = setInterval(() => {
+			// todo: fix this reset
+			strip.color('black');
+
+			for (i = 0; i < colors.length; i++) {
+				const p = from - i;
+				if (p < 0) {
+					break;
+				}
+
+				if (p > 59) {
+					continue;
+				}
+
+				pixels[i] = strip.pixel(p).color(colors[i]);
+			}
+
+			from++;
+			if (from - colors.length > 60) {
+				clearInterval(interval);
+				animating = false;
+			}
+
+			// latch
+			strip.show();
+		}, speed);
+	};
+}
+
 board.on('ready', function () {
 	const strip = new pixel.Strip({
 		board: this,
@@ -51,9 +104,10 @@ board.on('ready', function () {
 		strips: [{pin: 6, length: 60}]
 	});
 
-	strip.on('ready', function () {
-		setInterval(function () {
-			// reset
+	strip.on('ready', () => {
+		// the clock
+		setInterval(() => {
+			// todo: fix this reset
 			strip.color('black');
 
 			const time = getTime();
@@ -69,5 +123,7 @@ board.on('ready', function () {
 		}, delta);
 	});
 
-	this.repl.inject({ time, strip });
+	const circle = drawCircle(strip);
+
+	this.repl.inject({ time, strip, circle, animating });
 });
