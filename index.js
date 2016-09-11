@@ -11,6 +11,8 @@ const secondColor = [255, 0, 255];
 const delta = 1000;
 let animating = false;
 
+const pixels = [];
+
 function getTime() {
 	const date = new Date();
 
@@ -98,6 +100,14 @@ board.on('ready', function () {
 		strips: [{pin: 6, length: 60}]
 	});
 
+	// initilise pixels
+	for (let i = 0; i < 60; i++) {
+		pixels[i] = {
+			p: strip.pixel(i),
+			colors: []
+		};
+	}
+
 	strip.on('ready', () => {
 		// the clock
 		setInterval(() => {
@@ -108,9 +118,9 @@ board.on('ready', function () {
 
 			const {hp, mp, sp} = getPixels(time);
 
-			strip.pixel(hp).color(hourColor);
-			strip.pixel(mp).color(minuteColor);
-			strip.pixel(sp).color(secondColor);
+			pixels[hp].p.color(hourColor);
+			pixels[mp].p.color(minuteColor);
+			pixels[sp].p.color(secondColor);
 
 			// latch
 			strip.show();
