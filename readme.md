@@ -22,6 +22,18 @@ Buy from [adafruit](https://www.adafruit.com/categories/184) or [AliExpress](htt
 
 *NOTE*: The first pixel is 0 (or 60) on a clock
 
+### REPL
+
+There are a few commands you can type in REPL
+
+#### time()
+
+Get current time for debug
+
+#### strip
+
+The [strip object](https://github.com/ajfisher/node-pixel#strip)
+
 
 ## Further reading
 

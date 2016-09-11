@@ -39,6 +39,11 @@ function getPixels({hours, minutes, seconds}) {
 	};
 }
 
+function time() {
+	const {hours, minutes, seconds} = getTime();
+	return `${hours}:${minutes}:${seconds}`
+}
+
 board.on('ready', function () {
 	const strip = new pixel.Strip({
 		board: this,
@@ -53,8 +58,6 @@ board.on('ready', function () {
 
 			const time = getTime();
 
-			console.log(`${time.hours}:${time.minutes}:${time.seconds}`);
-
 			const {hp, mp, sp} = getPixels(time);
 
 			strip.pixel(hp).color(hourColor);
@@ -65,4 +68,6 @@ board.on('ready', function () {
 			strip.show();
 		}, delta);
 	});
+
+	this.repl.inject({ time, strip });
 });
