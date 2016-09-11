@@ -15,16 +15,22 @@ Buy from [adafruit](https://www.adafruit.com/categories/184) or [AliExpress](htt
 ## Usage
 
 1. Setup your NeoPixel (Ring Wall Clock 60 X Ultra Bright WS2812 5050 RGB LED Lamp Panel)
-2. Clone this repo
-3. Run `npm install && npm run setup`
-4. Run `npm start`
+1. Connect DIN to pin 6 on Arduino
+1. Clone this repo
+1. Run `npm install && npm run setup`
+1. Run `npm start`
+
+*NOTE*: The first pixel is 0 (or 60) on a clock
 
 
 ## Further reading
 
 https://www.adafruit.com/category/168
+
 https://github.com/ajfisher/node-pixel
+
 http://johnny-five.io/
+
 https://www.arduino.cc/
 
 
