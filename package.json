@@ -1,0 +1,52 @@
+{
+  "name": "neoclock-js",
+  "version": "0.0.0",
+  "description": "A NeoPixel wall clock made with JavaScript",
+  "license": "MIT",
+  "repository": "stevemao/neoclock-js",
+  "author": {
+    "name": "Steve Mao",
+    "email": "maochenyan@gmail.com",
+    "url": "github.com/stevemao"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && nyc ava",
+    "setup": "interchange install git+https://github.com/ajfisher/node-pixel -a uno --firmata",
+    "start": "node index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "iot",
+    "arduino",
+    "johnny-five",
+    "led",
+    "NeoPixel",
+    "clock",
+    "rgb"
+  ],
+  "dependencies": {
+    "johnny-five": "^0.10.0",
+    "nodebots-interchange": "^1.1.2",
+    "node-pixel": "^0.7.1"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "coveralls": "^2.11.12",
+    "nyc": "^7.1.0",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "esnext": true
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  }
+}
